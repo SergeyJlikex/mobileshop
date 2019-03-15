@@ -13,3 +13,7 @@ db = SQLAlchemy(server)
 @server.route('/')
 def index():
     return "Hello World"
+
+
+if __name__ == "__main__":
+    server.run(debug=True)
