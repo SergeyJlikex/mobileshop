@@ -1,13 +1,13 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
 import os
+from sqlalchemy.orm import Session
+from models import User
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 server = Flask(__name__)
-server.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-                                    os.path.join(basedir, 'database.db')
-server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(server)
+engine = create_engine('sqlite:///' + os.path.join(basedir, 'database.db'), echo=False)
+session = Session(bind=engine)
 
 
 @server.route('/')
