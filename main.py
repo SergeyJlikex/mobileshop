@@ -2,8 +2,7 @@ from flask import Flask
 from sqlalchemy import create_engine
 import os
 from sqlalchemy.orm import Session
-from models import User
-
+from models import Brand, Country, Phone
 basedir = os.path.abspath(os.path.dirname(__file__))
 server = Flask(__name__)
 engine = create_engine('sqlite:///' + os.path.join(basedir, 'database.db'), echo=False)
