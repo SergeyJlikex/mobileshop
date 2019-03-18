@@ -41,3 +41,6 @@ class Phone(Base):
     country_id = Column(Integer, ForeignKey('country.id'))
     brand = relationship("Brand", backref="phone")
     country = relationship("Country", backref="phone")
+
+    def __repr__(self):
+        return "<Phone('%s')>" % (self.name)
