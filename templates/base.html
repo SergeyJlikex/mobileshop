@@ -1,0 +1,58 @@
+<html>
+    <head>
+        {%block head%}
+        <title>Магазин мобилок</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/index.css')}}">
+        {%endblock%}
+    </head>
+    <body>
+        <div id="head">
+            <img id="tele" src="{{url_for('static', filename='images/znak.png')}}" width="150" height="100">
+            <h1>Сайт по продаже мобилок</h1>
+            
+        </div>
+        <div id="wrapper">
+            <div id="filter">
+                <!-- filter brand-->
+                    <a href="{{url_for('index')}}">Вес каталог</a>
+                    <dl>
+                        <dt>Производитель</dt>
+                    {% for brand in brands %}
+                    <dd><a href="{{url_for('brand', what=brand.id)}}">{{brand.brandname}}</a></dd>
+                    {% endfor %} 
+                    </dl>
+                <!-- Filter country-->
+                <dl>
+                    <dt>Страна</dt>
+                    {% for cont in countrys %}
+                    <dd><a href="{{url_for('country', what=cont.id)}}">{{cont.countryname}}</a></dd>
+                {% endfor %}
+                </dl>
+                <!-- filter display-->
+                <dl>
+                    <dt>Экран</dt>
+                    {% for display in displays %}
+                    <dd><a href="{{url_for('display', what=display.display)}}">{{display.display}} "</a></dd>
+                    {%endfor%} 
+                </dl>
+                <!-- filter rams-->
+                <dl>
+                    <dt>Память</dt>
+                    {% for ram in rams %}
+                    <dd><a href="{{url_for('ram', what=ram.ram)}}">{{ram.ram}} GB</a></dd>
+                    {%endfor%}
+                </dl>
+                <!-- hdd -->
+                <dl>
+                    <dt>Встроеная Память</dt>
+                    {%for hdd in hdds%}
+                    <dd><a href="{{url_for('hdd', what=hdd.hdd)}}">{{hdd.hdd}} GB</a></dd>
+                    {%endfor%}
+                </dl>
+            </div>
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

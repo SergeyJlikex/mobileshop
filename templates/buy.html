@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Вы хотите приобрести телефон:</h3>
+<!-- Catolog-->
+{% for phone in phones %}
+<dir class="phonecard">
+
+    <h3>{{phone.name}}</h3>
+    <img src="{{url_for('static', filename='images/' + phone.id|string + '.jpg')}}" width="75" height="150"
+        alt="imagesphone">
+    <p>{{phone.text}}</p>
+    <h4>Цена:{{phone.price}}</h4>
+    
+</dir>
+{% endfor %}
+<h4>Введите ваш номер телефона и продавец с вами свяжеться в течении 15 мин</h4>
+<input type="text">
+<button>Отправить</button>
+{% endblock %}

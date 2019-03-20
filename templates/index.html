@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Catolog-->
+{% for phone in phones %}
+<dir class="phonecard">
+    <h3>{{phone.name}}</h3>
+    <img src="{{url_for('static', filename='images/' + phone.id|string + '.jpg')}}" width="75" height="150"
+        alt="imagesphone">
+    <p>{{phone.text}}</p>
+    <h4>Цена:{{phone.price}}</h4>
+    <a href="{{url_for('buy', mobile=phone.id)}}">
+        <img id="buy" src="{{url_for('static', filename='images/buy.png')}}" width="100" height="45">
+    </a>
+</dir>
+{% endfor %}
+{% endblock %}
